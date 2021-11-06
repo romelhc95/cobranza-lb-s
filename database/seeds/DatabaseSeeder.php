@@ -28,7 +28,8 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Grau'],
             ['name' => 'Bahia Diego Ferre'],
             ['name' => 'Tupac Amaru'],
-            ['name' => 'Ex-Bahia']
+            ['name' => 'Ex-Bahia'],
+            ['name' => 'Santa Ursula']
         ];
 
         foreach ($sectors as $sector) {
