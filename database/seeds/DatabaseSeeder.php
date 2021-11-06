@@ -56,7 +56,7 @@ class DatabaseSeeder extends Seeder
             'last_name' => 'La Barrera',
             'second_last_name' => 'Salazar',
             'phone' => '977820728',
-            'password' => bcrypt('12345678'),
+            'password' => bcrypt('07170967'),
             'address' => 'Sin dirección',
             'sector_id' => 8,
             'is_admin' => 1
@@ -69,7 +69,7 @@ class DatabaseSeeder extends Seeder
             'last_name' => 'La Barrera',
             'second_last_name' => 'Salazar',
             'phone' => '999234948',
-            'password' => bcrypt('12345678'),
+            'password' => bcrypt('79948814'),
             'address' => 'Sin dirección',
             'sector_id' => 8,
             'is_admin' => 1
@@ -82,21 +82,21 @@ class DatabaseSeeder extends Seeder
             'last_name' => 'Salazar',
             'second_last_name' => 'Ato',
             'phone' => '996778684',
-            'password' => bcrypt('12345678'),
+            'password' => bcrypt('68296503'),
             'address' => 'Sin dirección',
             'sector_id' => 8,
             'is_admin' => 1
         ]);
 
-        factory(App\User::class, 100)->create();
+        //factory(App\User::class, 100)->create();
 
-        App\Loan::create([
+        /**App\Loan::create([
             'loan' => 3000,
             'monetary_interest' => 10,
             'amount' => 3300,
             'user_id' => 1
-        ]);
-
+        ]); 
+        
         App\Payment::create([
             'payment' => 300,
             'new_payment' => 3000,
@@ -104,6 +104,7 @@ class DatabaseSeeder extends Seeder
             'payment_status' => 'Pagado',
             'loan_id' => 1,
             'user_id' => 1
-        ]);
+        ]);*/
+        
     }
 }
