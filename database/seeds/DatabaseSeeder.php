@@ -22,14 +22,14 @@ class DatabaseSeeder extends Seeder
         }
         // $this->call(UsersTableSeeder::class);
         $sectors = [
+            ['name' => 'Santa Ursula'],
             ['name' => 'Cine'],
             ['name' => 'Casona'],
             ['name' => 'Peluqueria'],
             ['name' => 'Grau'],
             ['name' => 'Bahia Diego Ferre'],
             ['name' => 'Tupac Amaru'],
-            ['name' => 'Ex-Bahia'],
-            ['name' => 'Santa Ursula']
+            ['name' => 'Ex-Bahia']
         ];
 
         foreach ($sectors as $sector) {
@@ -44,9 +44,9 @@ class DatabaseSeeder extends Seeder
             'last_name' => ' ',
             'second_last_name' => ' ',
             'phone' => '956644522',
-            'password' => bcrypt('12345678'),
+            'password' => bcrypt('123456780.'),
             'address' => 'Sin dirección',
-            'sector_id' => 8,
+            'sector_id' => 1,
             'is_admin' => 1
         ],
         [
@@ -59,7 +59,7 @@ class DatabaseSeeder extends Seeder
             'phone' => '977820728',
             'password' => bcrypt('07170967'),
             'address' => 'Sin dirección',
-            'sector_id' => 8,
+            'sector_id' => 1,
             'is_admin' => 1
         ],
         [
@@ -72,7 +72,7 @@ class DatabaseSeeder extends Seeder
             'phone' => '999234948',
             'password' => bcrypt('79948814'),
             'address' => 'Sin dirección',
-            'sector_id' => 8,
+            'sector_id' => 1,
             'is_admin' => 1
         ],
         [
@@ -85,7 +85,7 @@ class DatabaseSeeder extends Seeder
             'phone' => '996778684',
             'password' => bcrypt('68296503'),
             'address' => 'Sin dirección',
-            'sector_id' => 8,
+            'sector_id' => 1,
             'is_admin' => 1
         ]);
 
