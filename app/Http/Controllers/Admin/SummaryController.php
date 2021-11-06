@@ -17,7 +17,11 @@ class SummaryController extends Controller
         $total = DB::select('SELECT SUM(a.PAYMENT) AS SUMA, NOW() AS FECHA FROM payments a, users b 
         WHERE DATE_FORMAT(a.CREATED_AT, "%Y%m%d") = DATE_FORMAT(NOW(), "%Y%m%d") AND a.USER_ID=b.ID AND b.IS_ADMIN=0');
 
-        return view('summary.index', compact('summary','total'));
+        if ($summary == []){
+            return redirect()->route('home')->with('warning','Aun no se han realizado pagos');
+        }else{
+            return view('summary.index', compact('summary','total'));
+        }
 
     }
 

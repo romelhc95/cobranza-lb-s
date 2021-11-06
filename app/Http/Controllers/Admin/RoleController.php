@@ -7,11 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Document;
-use App\Sector;
 use App\User;
 
-
-class UserController extends Controller
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,16 +18,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        /**return view('users.index', [
-            'users' => User::with('sector')->latest()->get()
-        ]); */
+        $roles = DB::select('SELECT a.id, CONCAT(a.document, " ", a.document_number) AS document_numberuser, concat(a.first_name," ",ifnull(a.second_name,"")," ",a.last_name," ",
+        a.second_last_name) AS full_name, a.created_at, a.is_admin, b.name AS sector FROM users a INNER JOIN sectors b ON a.sector_id=b.id AND a.is_admin<>0');
 
-        $users = DB::select('SELECT a.id, CONCAT(a.document, " ", a.document_number) AS document_numberuser, concat(a.first_name," ",ifnull(a.second_name,"")," ",a.last_name," ",
-        a.second_last_name) AS full_name, a.created_at, b.name AS sector FROM users a INNER JOIN sectors b ON a.sector_id=b.id AND a.is_admin=0');
-
-        /**$users = User::latest()->paginate(10); */
-
-        return view('users.index', compact('users'));
+        return view('roles.index', compact('roles'));
     }
 
     /**
@@ -40,8 +32,7 @@ class UserController extends Controller
     public function create()
     {
         $documents = Document::all();
-        $sectors = Sector::all();
-        return view('users.create', compact('documents', 'sectors'));
+        return view('roles.create', compact('documents'));
     }
 
     /**
@@ -62,10 +53,11 @@ class UserController extends Controller
             'phone' => $request['phone'],
             'password' => Hash::make($request['password']),
             'address' => $request['address'],
-            'sector_id' => $request['sector'],
+            'sector_id' => 1,
+            'is_admin' => $request['role'],
         ]);
 
-        return redirect()->route('users.index')->with('success','Usuario Creado Correctamente');
+        return redirect()->route('roles.index')->with('success','Rol Creado Correctamente');
     }
 
     /**
@@ -74,10 +66,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($user)
     {
-        dd($user);
-        return view('users.show', compact('user'));
+        $user = User::find($user);
+        //dd($user);
+        return view('roles.show', compact('user'));
     }
 
     /**
@@ -86,11 +79,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
+        
+        $user = User::find($id);
+        //dd($user);
         $documents = Document::all();
-        $sectors = Sector::all();
-        return view('users.edit', compact('user', 'documents', 'sectors'));
+        return view('roles.edit', compact('user', 'documents'));
     }
 
     /**
@@ -102,9 +97,22 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $user->update($request->all());
+        //dd($request->all());
+        //$user->update($request->all());
+        $user->update([
+            'document' => $request['document'],
+            'document_number' => $request['document_number'],
+            'first_name' => $request['first_name'],
+            'second_name' => $request['second_name'],
+            'second_last_name' => $request['second_last_name'],
+            'phone' => $request['phone'],
+            'password' => bcrypt($request['password']),
+            'sector' => 1,
+            'role' => $request['role'],
+        ]);
+        //dd($user);
 
-        return redirect()->route('users.index')->with('warning','Usuario Actualizado Correctamente');
+        return redirect()->route('roles.index')->with('warning','Rol Actualizado Correctamente');
     }
 
     /**
@@ -113,10 +121,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($user)
     {
+        $user = User::find($user);
         $user->delete();
 
-        return redirect()->route('users.index')->with('error', 'Usuario eliminado correctamente');
+        return redirect()->route('roles.index')->with('error', 'Rol eliminado correctamente');
     }
 }

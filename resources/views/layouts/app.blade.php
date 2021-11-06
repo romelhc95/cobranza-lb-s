@@ -47,6 +47,9 @@
                       <li class="nav-item {{ ! Route::is('loans.index') ?: 'active' }}">
                           <a class="nav-link" href="{{ route('loans.index') }}">Préstamos</a>
                       </li>
+                      <li class="nav-item {{ ! Route::is('roles.index') ?: 'active' }}">
+                        <a class="nav-link" href="{{ route('roles.index') }}">Usuarios</a>
+                    </li>
                     {{-- @else
                         <li class="nav-item {{ ! Route::is('client.index') ?: 'active' }}">
                             <a class="nav-link" href="{{ route('client.index') }}">Inicio</a>

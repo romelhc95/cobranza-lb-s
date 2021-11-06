@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
         $sectors = [
             ['name' => 'Santa Ursula'],
             ['name' => 'Cine'],
-            ['name' => 'Casona'],
+            ['name' => 'La Casona'],
             ['name' => 'Peluqueria'],
             ['name' => 'Grau'],
             ['name' => 'Bahia Diego Ferre'],
@@ -48,7 +48,7 @@ class DatabaseSeeder extends Seeder
             'address' => 'Sin dirección',
             'sector_id' => 1,
             'is_admin' => 1
-        ],
+        ]/**,
         [
             'document' => 'DNI',
             'document_number' => '76907170',
@@ -87,7 +87,7 @@ class DatabaseSeeder extends Seeder
             'address' => 'Sin dirección',
             'sector_id' => 1,
             'is_admin' => 1
-        ]);
+        ] */);
 
         //factory(App\User::class, 100)->create();
 

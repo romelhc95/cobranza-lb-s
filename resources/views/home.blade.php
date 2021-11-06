@@ -9,6 +9,7 @@
 
                 <div class="card-body">
                     <a href="{{ Route('summary') }}" style="text-decoration:none">
+                        @include('layouts.flash-message')
                         <div class="alert alert-heading bg-primary text-white">
                             <h4>Monto Recaudado</h4>
                             <h5>@if( is_null($index[0]->SUMA) )

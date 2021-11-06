@@ -88,6 +88,8 @@ Route::group([
     Route::resource('users', 'UserController');
         //->middleware('auth');
 
+    Route::resource('roles', 'RoleController');
+
     Route::resource('loans', 'LoanController')
         //->middleware('auth')
         ->except('show');
