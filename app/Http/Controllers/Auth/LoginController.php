@@ -30,6 +30,7 @@ class LoginController extends Controller
      * @var string
      */
     //protected $redirectTo = RouteServiceProvider::HOME;
+
     protected $redirectTo = '/home';
 
     /**
@@ -45,6 +46,26 @@ class LoginController extends Controller
     public function logout(){
         Auth::logout();
         return redirect('login')->withCookie(cookie('forward_session', '', -1));
+    }
+
+    public function root(){
+        return view('auth.login');
+    }
+
+    public function rootFunction(){
+        if (auth()->user()->is_admin){
+            return redirect()->route('home');
+        }else{
+            return redirect()->route('client.index');
+        }
+    }
+
+    public function homeFunction(){
+        if (auth()->user()->is_admin){
+            return redirect()->route('home');
+        }else{
+            return redirect()->route('client.index');
+        }
     }
 
     public function redirectPath()

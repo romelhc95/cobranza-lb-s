@@ -10,13 +10,18 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 Route::get('/clear-cache', function() {
     $exitCode = Artisan::call('cache:clear');
     return 'Application cache cleared';
 });
 
- // borrar caché de ruta
- Route::get('/route-cache', function() {
+// borrar caché de ruta
+Route::get('/route-cache', function() {
     $exitCode = Artisan::call('route:cache');
     return 'Routes cache cleared';
 });
@@ -25,7 +30,7 @@ Route::get('/clear-cache', function() {
 Route::get('/config-cache', function() {
     $exitCode = Artisan::call('config:cache');
     return 'Config cache cleared';
-}); 
+});
 
 // borrar caché de vista
 Route::get('/view-clear', function() {
@@ -62,7 +67,7 @@ Route::group([
     'prefix' => 'client',
     'namespace' => 'Client'
 ], function () {
-Route::resource('client', 'ClientController');
+    Route::resource('client', 'ClientController');
 //    ->middleware('auth');
 });
 
@@ -86,7 +91,7 @@ Route::group([
         ->except('show');
 
     Route::resource('users', 'UserController');
-        //->middleware('auth');
+    //->middleware('auth');
 
     Route::resource('roles', 'RoleController');
 
@@ -95,6 +100,5 @@ Route::group([
         ->except('show');
 
     Route::resource('payments', 'PaymentController');
-        //->middleware('auth');
+    //->middleware('auth');
 });
-

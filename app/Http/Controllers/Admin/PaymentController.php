@@ -4,12 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Payment;
-use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
-use mysql_xdevapi\Table;
-use function PHPUnit\Framework\isNull;
 
 class PaymentController extends Controller
 {
