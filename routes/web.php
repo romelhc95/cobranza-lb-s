@@ -15,51 +15,8 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/clear-cache', function() {
-    $exitCode = Artisan::call('cache:clear');
-    return 'Application cache cleared';
-});
-
-// borrar caché de ruta
-Route::get('/route-cache', function() {
-    $exitCode = Artisan::call('route:cache');
-    return 'Routes cache cleared';
-});
-
-// borrar caché de configuración
-Route::get('/config-cache', function() {
-    $exitCode = Artisan::call('config:cache');
-    return 'Config cache cleared';
-});
-
-// borrar caché de vista
-Route::get('/view-clear', function() {
-    $exitCode = Artisan::call('view:clear');
-    return 'View cache cleared';
-});
-
-Route::get('/', function () {
-    return view('auth.login');
-});
-
-Route::get('/logout', 'Auth\LoginController@logout');
-
-Auth::routes();
-Route::get('/', function () {
-    if (auth()->user()->is_admin){
-        return redirect()->route('home');
-    }else{
-        return redirect()->route('client.index');
-    }
-})->middleware('auth');
-
-Route::get('home', function () {
-    if (auth()->user()->is_admin){
-        return redirect()->route('home');
-    }else{
-        return redirect()->route('client.index');
-    }
-})->middleware('auth');
+Route::view('/', 'auth.login')->middleware('guest');
+Route::post('login', 'Auth\LoginController@login')->name('login');
 
 //Cliente
 Route::group([
@@ -67,8 +24,9 @@ Route::group([
     'prefix' => 'client',
     'namespace' => 'Client'
 ], function () {
+
     Route::resource('client', 'ClientController');
-//    ->middleware('auth');
+    
 });
 
 //Administrador
@@ -78,27 +36,26 @@ Route::group([
     'namespace' => 'Admin'
 ], function () {
 
-    Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+    Route::get('/home', 'HomeController@index')->name('home');
 
-    Route::get('/summary', 'SummaryController@index')->name('summary')->middleware('auth');
+    Route::get('/summary', 'SummaryController@index')->name('summary');
 
-    Route::get('/summaryLoan', 'SummaryController@summaryloan')->name('summaryloan')->middleware('auth');
+    Route::get('/summaryLoan', 'SummaryController@summaryloan')->name('summaryloan');
 
-    Route::get('/summaryCollected', 'SummaryController@summarycollected')->name('summarycollected')->middleware('auth');
+    Route::get('/summaryCollected', 'SummaryController@summarycollected')->name('summarycollected');
 
     Route::resource('sectors', 'SectorController')
-        //->middleware('auth')
         ->except('show');
 
     Route::resource('users', 'UserController');
-    //->middleware('auth');
 
     Route::resource('roles', 'RoleController');
 
     Route::resource('loans', 'LoanController')
-        //->middleware('auth')
         ->except('show');
 
     Route::resource('payments', 'PaymentController');
-    //->middleware('auth');
+
 });
+
+Route::post('logout', 'Auth\LoginController@logout');

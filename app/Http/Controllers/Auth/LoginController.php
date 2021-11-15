@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cookie;
-
 use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
@@ -22,59 +22,33 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+    public function login(Request $request){
+        
+        $remember = $request->filled('remember');
+        
+        if (Auth::attempt($request->only('document_number', 'password'), $remember)) {
+            $request->session()->regenerate();
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    //protected $redirectTo = RouteServiceProvider::HOME;
-
-    protected $redirectTo = '/home';
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
+            if (auth()->user()->is_admin) {
+                return redirect()->intended('/admin/home');
+            } else {
+                return redirect()->intended('/client/client');
+            }
+            
+        }
+        
+        throw ValidationException::withMessages([
+            'document_number' => __('auth.failed'),
+            'password' => __('auth.password')
+        ]);
     }
 
-    public function logout(){
+    public function logout(Request $request){
+        
         Auth::logout();
-        return redirect('login')->withCookie(cookie('forward_session', '', -1));
-    }
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->to('/');
 
-    public function root(){
-        return view('auth.login');
-    }
-
-    public function rootFunction(){
-        if (auth()->user()->is_admin){
-            return redirect()->route('home');
-        }else{
-            return redirect()->route('client.index');
-        }
-    }
-
-    public function homeFunction(){
-        if (auth()->user()->is_admin){
-            return redirect()->route('home');
-        }else{
-            return redirect()->route('client.index');
-        }
-    }
-
-    public function redirectPath()
-    {
-        //dd(auth()->user()->is_admin === 0);
-        if (auth()->user()->is_admin === 0) {
-            return 'client/client';
-        }
-
-        return 'admin/home';
     }
 }

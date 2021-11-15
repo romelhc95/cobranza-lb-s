@@ -66,12 +66,17 @@
                         {{ Auth::user()->getUsername() }}
                     </button>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="{{ route('logout') }}"onclick="event.preventDefault();
+                        <form action="/logout" method="post" style="display: inline">
+                            @csrf
+                            <a class="dropdown-item" href="#" onclick="this.closest('form').submit()">{{ __('Logout') }}</a>
+                        </form>
+
+                        {{-- <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
-                        </form>
+                        </form> --}}
                     </div>
                 {{--@endguest--}}
               </div>

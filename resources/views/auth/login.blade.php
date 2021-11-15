@@ -8,15 +8,14 @@
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form action="{{ route('login') }}" method="POST">
                         @csrf
                         <div class="form-group row">
-                            {{--<label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>--}}
                             <label for="Usuario" class="col-md-4 col-form-label text-md-right">Usuario</label>
 
                             <div class="col-md-6">
                                 {{--<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>--}}
-                                <input id="document_number" type="text" class="form-control @error('document_number') is-invalid @enderror" name="document_number" value="{{ old('document_number') }}" autocomplete="document_number" placeholder="Ingrese DNI" autofocus>
+                                <input id="document_number" type="number" class="form-control @error('document_number') is-invalid @enderror" name="document_number" value="{{ old('document_number') }}" autocomplete="document_number" placeholder="Ingrese DNI" autofocus>
 
                                 @error('document_number')
                                     <span class="invalid-feedback" role="alert">
@@ -30,7 +29,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="current-password"  placeholder="Ingrese DNI">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="current-password"  placeholder="Ingrese Contraseña">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -40,32 +39,12 @@
                             </div>
                         </div>
 
-                        {{-- <div class="form-group row">
-                            <div class="col-md-6 offset-md-5">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div> --}}
-
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4 center">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
-
-                                {{-- @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif --}}
-                                <div>
-                                    &nbsp;
-                                </div>
+                                <div>&nbsp;</div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
