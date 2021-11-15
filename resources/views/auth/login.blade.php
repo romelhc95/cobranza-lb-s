@@ -8,13 +8,12 @@
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
-                    <form action="{{ route('login') }}" method="POST">
+                    <form action="{{ url('login') }}" method="POST">
                         @csrf
                         <div class="form-group row">
                             <label for="Usuario" class="col-md-4 col-form-label text-md-right">Usuario</label>
 
                             <div class="col-md-6">
-                                {{--<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>--}}
                                 <input id="document_number" type="number" class="form-control @error('document_number') is-invalid @enderror" name="document_number" value="{{ old('document_number') }}" autocomplete="document_number" placeholder="Ingrese DNI" autofocus>
 
                                 @error('document_number')

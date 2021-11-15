@@ -34,6 +34,8 @@ class LoginController extends Controller
             } else {
                 return redirect()->intended('/client/client');
             }
+
+            
             
         }
         
