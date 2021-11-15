@@ -25,7 +25,7 @@ class UserController extends Controller
         ]); */
 
         $users = DB::select('SELECT a.id, CONCAT(a.document, " ", a.document_number) AS document_numberuser, concat(a.first_name," ",ifnull(a.second_name,"")," ",a.last_name," ",
-        a.second_last_name) AS full_name, a.created_at, b.name AS sector FROM users a INNER JOIN sectors b ON a.sector_id=b.id AND a.is_admin=0 AND a.id<>1');
+        a.second_last_name) AS full_name, a.created_at, b.name AS sector FROM users a INNER JOIN sectors b ON a.sector_id=b.id AND a.is_admin=0');
 
         /**$users = User::latest()->paginate(10); */
 
