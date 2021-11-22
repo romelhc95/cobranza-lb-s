@@ -79,7 +79,7 @@ class DatabaseSeeder extends Seeder
             'document' => 'DNI',
             'document_number' => '03569286',
             'first_name' => 'Gloria',
-            'second_name' => '',
+            'second_name' => 'Violeta',
             'last_name' => 'Salazar',
             'second_last_name' => 'Ato',
             'phone' => '996778684',
@@ -89,23 +89,27 @@ class DatabaseSeeder extends Seeder
             'is_admin' => 1
         ] */);
 
-        //factory(App\User::class, 100)->create();
+        factory(App\User::class, 100)->create();
 
         /**App\Loan::create([
             'loan' => 3000,
             'monetary_interest' => 10,
             'amount' => 3300,
             'user_id' => 1
-        ]); 
+        ]);  */
         
-        App\Payment::create([
+        factory(App\Loan::class, 150)->create();
+
+        /**App\Payment::create([
             'payment' => 300,
             'new_payment' => 3000,
             'loan_status' => 'Pendiente',
             'payment_status' => 'Pagado',
             'loan_id' => 1,
             'user_id' => 1
-        ]);*/
+        ]); */
+
+        factory(App\Payment::class, 250)->create();
         
     }
 }
