@@ -103,7 +103,7 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $user->update($request->all());
-
+        //dd($request->all());
         return redirect()->route('users.index')->with('warning','Usuario Actualizado Correctamente');
     }
 

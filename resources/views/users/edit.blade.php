@@ -41,7 +41,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Telefono (*)</label>
-                                <input type="text" name="text" class="form-control" required value="{{ old('user', $user->phone) }}">
+                                <input type="text" name="phone" class="form-control" required value="{{ old('user', $user->phone) }}">
                             </div>
                             <div class="form-group">
                                 <label>Contraseña (*)</label>
@@ -53,7 +53,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Sector (*)</label>
-                                <select type="text" name="sector" class="form-control" required>
+                                <select type="text" name="sector_id" class="form-control" required>
                                     <option value="{{ old('user', $user->sector->name) }}">{{ old('user', $user->sector->name) }}</option>
                                     @foreach($sectors as $sector)
                                         <option value="{{ $sector->id }}">{{$sector->name}}</option>
