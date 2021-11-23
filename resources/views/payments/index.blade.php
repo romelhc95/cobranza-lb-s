@@ -50,9 +50,10 @@
                         <table id="payment_index" class="table table-striped table-bordered nowrap" style="width:100%">
                             <thead>
                             <tr>
-                                <th>Estado</th>
+                                <th>Documento</th>
                                 <th>Nombres</th>
                                 <th>Sector</th>
+                                <th>Estado</th>
                                 <th>Total</th>
                                 <th>Pagado</th>
                                 <th>Quedán</th>
@@ -63,9 +64,10 @@
                             <tbody>
                                 @foreach($payments as $payment)
                                 <tr>
-                                    <td class="text-center"><span class="badge badge-warning">{{ $payment->status }}</span></td>
+                                    <td class="text-center">{{ $payment->document }}</td>
                                     <td class="text-center">{{ $payment->full_name }}</td>
                                     <td class="text-center">{{ $payment->sector }}</td>
+                                    <td class="text-center"><span class="badge badge-warning">{{ $payment->status }}</span></td>
                                     <td class="text-center">S/. {{ $payment->amount }}</td>
                                     <td class="text-center">
                                         @if( is_null($payment->payment) )

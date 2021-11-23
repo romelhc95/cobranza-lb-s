@@ -17,7 +17,7 @@ class PaymentController extends Controller
     public function index()
     {
         $payments = DB::select('SELECT * FROM(
-            SELECT a.id as user_id, b.id as loan_id, concat(a.first_name," ",ifnull(a.second_name,"")," ",a.last_name," ",
+            SELECT a.id as user_id, b.id as loan_id, concat(a.document," ",a.document_number) as document, concat(a.first_name," ",ifnull(a.second_name,"")," ",a.last_name," ",
                     a.second_last_name) AS full_name, d.name AS sector, b.loan, b.monetary_interest, b.amount, c.payment, c.new_payment, c.loan_status, c.payment_status, c.updated_at,
                   CASE
                       WHEN c.loan_status IS NULL THEN "Pendiente"
