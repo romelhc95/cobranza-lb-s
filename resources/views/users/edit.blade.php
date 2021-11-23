@@ -54,7 +54,7 @@
                             <div class="form-group">
                                 <label>Sector (*)</label>
                                 <select type="text" name="sector_id" class="form-control" required>
-                                    <option value="{{ old('user', $user->sector->name) }}">{{ old('user', $user->sector->name) }}</option>
+                                    <option value="{{ old('user', $user->sector_id) }}">{{ old('user', $user->sector->name) }}</option>
                                     @foreach($sectors as $sector)
                                         <option value="{{ $sector->id }}">{{$sector->name}}</option>
                                     @endforeach

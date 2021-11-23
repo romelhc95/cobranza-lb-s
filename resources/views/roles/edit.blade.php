@@ -59,7 +59,7 @@
                                     @else
                                     <option value="2">Ayudante</option>
                                     @endif
-                                    @if ( $user->is_admin === 1 )
+                                    @if ( $user->is_admin !== 1 )
                                     <option value="2">Ayudante</option>
                                     @else
                                     <option value="1">Administrador</option>
