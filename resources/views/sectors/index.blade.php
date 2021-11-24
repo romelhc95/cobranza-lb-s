@@ -20,7 +20,7 @@
                                 <tr>
                                     <th>Sector</th>
                                     <th>Creado</th>
-                                    <th>Usuario</th>
+                                    <th>Acción</th>
                                 </tr>
                             </thead>
                             <tbody>

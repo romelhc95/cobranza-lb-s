@@ -54,7 +54,7 @@
                             @csrf
                             <input type="submit" value="Guardar" class="btn btn-sm btn-primary">
                             &nbsp;
-                            <button value="Volver" class="btn btn-sm btn-danger" onclick="return window.history.back();">Regresar</button>
+                            <button value="Volver" class="btn btn-sm btn-danger" onclick="return window.history.back();"><i class="bi bi-backspace-fill"> Regresar</i></button>
                         </div>
                     </form>
                 </div>

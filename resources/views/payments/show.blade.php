@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header"><strong>{{ $query[0]->full_name }}</strong>
-                    <button value="Volver" class="btn btn-sm btn-danger float-sm-right" onclick="return window.history.back();">Regresar</button>
+                    <button value="Volver" class="btn btn-sm btn-danger float-sm-right" onclick="return window.history.back();"><i class="bi bi-backspace-fill"> Regresar</i></button>
                 </div>
                 <div class="card-body">
                     @include('layouts.flash-message')

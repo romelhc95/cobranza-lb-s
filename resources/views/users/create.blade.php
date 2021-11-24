@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header"><strong>Crear Cliente</strong>
-                    <a href="{{ route('home') }}" class="btn btn-sm btn-danger float-right">Regresar</a>
+                    <a href="{{ route('home') }}" class="btn btn-sm btn-danger float-right"><i class="bi bi-backspace-fill"> Regresar</i></a>
                 </div>
                 <div class="card-body">
 
@@ -64,7 +64,6 @@
                             @csrf
                             <input type="submit" value="Guardar" class="btn btn-sm btn-primary">
                             {{--<button value="Volver" class="btn btn-sm btn-danger float-sm-right" onclick="return window.history.back();">Regresar</button>--}}
-                            <a href="{{ route('home') }}" class="btn btn-sm btn-danger float-right">Regresar</a>
                         </div>
                     </form>
                 </div>

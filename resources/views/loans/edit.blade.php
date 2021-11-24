@@ -33,7 +33,7 @@
                             @csrf
                             @method('PUT')
                             <input type="submit" value="Actualizar" class="btn btn-sm btn-success">
-                            <a href="{{ route('loans.index') }}" class="btn btn-sm btn-danger float-right">Regresar</a>
+                            <a href="{{ route('loans.index') }}" class="btn btn-sm btn-danger float-right"><i class="bi bi-backspace-fill"> Regresar</i></a>
                         </div>
                     </form>
                 </div>

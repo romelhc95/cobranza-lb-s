@@ -8,7 +8,7 @@
                 <div class="card-header">
                     <strong>Clientes</strong>
                     {{--<a href="{{ route('users.create') }}" class="btn btn-sm btn-primary float-right">Crear</a>--}}
-                    <a href="{{ route('home') }}" class="btn btn-sm btn-danger float-right">Regresar</a>
+                    <a href="{{ route('home') }}" class="btn btn-sm btn-danger float-right"><i class="bi bi-backspace-fill"> Regresar</i></a>
                 </div>
 
                 <div class="card-body">

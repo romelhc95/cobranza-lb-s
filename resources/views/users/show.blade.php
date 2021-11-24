@@ -58,10 +58,10 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <a href="{{ route('users.edit', $user) }}" class="btn btn-sm btn-success">Editar</a>
+                                <a href="{{ route('users.edit', $user) }}" class="btn btn-sm btn-success"><i class="bi-pencil-fill"> Editar</i></a>
                                 {{--<a href="{{ route('loans.create', $user) }}" class="btn btn-sm btn-dark">Nuevo Prestamo</a>--}}
                                 <a href="{{ url('admin/loans/create') }}?id_loan={{$user->id}}" class="btn btn-sm btn-dark">Nuevo Prestamo</a>
-                                <a href="{{ route('users.index') }}" class="btn btn-sm btn-danger float-right">Regresar</a>
+                                <a href="{{ route('users.index') }}" class="btn btn-sm btn-danger float-right"><i class="bi bi-backspace-fill"> Regresar</i></a>
                             </div>
                         </form>
                     </div>

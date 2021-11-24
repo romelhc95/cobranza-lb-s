@@ -6,7 +6,7 @@
         <div class="col-md-10">
             <div class="card">
                 <div class="card-header">Pagar Credito de <strong>{{ $payments[0]->full_name }}</strong>
-                    <a href="{{ route('users.index') }}" class="btn btn-sm btn-danger float-right">Regresar</a>
+                    <a href="{{ route('users.index') }}" class="btn btn-sm btn-danger float-right"><i class="bi bi-backspace-fill"> Regresar</i></a>
                 </div>
                 @include('layouts.flash-message')
                 <div class="modal fade" id="efectuar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

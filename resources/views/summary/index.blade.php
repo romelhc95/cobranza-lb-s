@@ -45,7 +45,7 @@
                               </tfoot>
                         </table>
                     </div>
-                    <a href="{{ route('home') }}" class="btn btn-sm btn-danger float-right">Regresar</a>
+                    <a href="{{ route('home') }}" class="btn btn-sm btn-danger float-right"><i class="bi bi-backspace-fill"> Regresar</i></a>
                 </div>
             </div>
         </div>

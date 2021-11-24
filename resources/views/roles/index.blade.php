@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">
                     <strong>Usuarios</strong>
-                    <a href="{{ route('roles.create') }}" class="btn btn-sm btn-primary float-right">&nbsp;&nbsp;&nbsp;Crear&nbsp;&nbsp;&nbsp;</a>
+                    <a href="{{ route('roles.create') }}" class="btn btn-sm btn-primary float-right"><i class="bi bi-newspaper"> Crear</i></a>
                 </div>
 
                 <div class="card-body">
@@ -53,7 +53,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <a href="{{ route('home') }}" class="btn btn-sm btn-danger">Regresar</a>
+                    <a href="{{ route('home') }}" class="btn btn-sm btn-danger"><i class="bi bi-backspace-fill"> Regresar</i></a>
                 </div> 
             </div>
         </div>

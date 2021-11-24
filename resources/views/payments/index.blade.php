@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header"><strong>Prestamos en ruta</strong></strong>
-                    <a href="{{ route('home') }}" class="btn btn-sm btn-danger float-right">Regresar</a>
+                    <a href="{{ route('home') }}" class="btn btn-sm btn-danger float-right"><i class="bi bi-backspace-fill"> Regresar</i></a>
                 </div>
                 @include('layouts.flash-message')
                 <div class="modal fade" id="efectuar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
