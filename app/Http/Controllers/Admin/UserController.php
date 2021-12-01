@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Document;
@@ -41,17 +41,19 @@ class UserController extends Controller
     {
         $documents = Document::all();
         $sectors = Sector::all();
+        //$sectors = DB::select('SELECT * FROM sectors WHERE id <> 2');
         return view('users.create', compact('documents', 'sectors'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\UserRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
+        //dd($request);
         User::create([
             'document' => $request['document'],
             'document_number' => $request['document_number'],
@@ -100,8 +102,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UserRequest $request, User $user)
     {
+        dd($request);
         $user->update($request->all());
         //dd($request->all());
         return redirect()->route('users.index')->with('warning','Usuario Actualizado Correctamente');

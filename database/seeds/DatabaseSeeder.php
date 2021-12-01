@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $documents = [
+            ['document' => 'Seleccione documento'],
             ['document' => 'DNI'],
             ['document' => 'CE'],
             ['document' => 'RUC']
@@ -22,7 +23,8 @@ class DatabaseSeeder extends Seeder
         }
         // $this->call(UsersTableSeeder::class);
         $sectors = [
-            ['name' => 'Santa Ursula'],
+            ['name' => 'Seleccione sector'],
+            //['name' => 'Santa Ursula'],
             ['name' => 'Cine'],
             ['name' => 'La Casona'],
             ['name' => 'Peluqueria'],

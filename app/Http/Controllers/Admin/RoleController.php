@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\RuleRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Document;
@@ -41,8 +41,9 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RuleRequest $request)
     {
+        //dd($request);
         User::create([
             'document' => $request['document'],
             'document_number' => $request['document_number'],
@@ -57,7 +58,7 @@ class RoleController extends Controller
             'is_admin' => $request['role'],
         ]);
 
-        return redirect()->route('roles.index')->with('success','Rol Creado Correctamente');
+        return redirect()->route('roles.index')->with('success','Usuario Creado Correctamente');
     }
 
     /**
@@ -84,7 +85,8 @@ class RoleController extends Controller
         
         $user = User::find($id);
         //dd($user);
-        $documents = Document::all();
+        //$documents = Document::all();
+        $documents = DB::select('SELECT * FROM documents WHERE id<>1');
         return view('roles.edit', compact('user', 'documents'));
     }
 
@@ -95,8 +97,9 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(RuleRequest $request, User $user)
     {
+        //dd($request);
         //dd($request->all());
         //$user->update($request->all());
         $user->update([
@@ -112,7 +115,7 @@ class RoleController extends Controller
         ]);
         //dd($user);
 
-        return redirect()->route('roles.index')->with('warning','Rol Actualizado Correctamente');
+        return redirect()->route('roles.index')->with('warning','Usuario Actualizado Correctamente');
     }
 
     /**
@@ -126,6 +129,6 @@ class RoleController extends Controller
         $user = User::find($user);
         $user->delete();
 
-        return redirect()->route('roles.index')->with('error', 'Rol eliminado correctamente');
+        return redirect()->route('roles.index')->with('error', 'Usuario Eliminado Correctamente');
     }
 }
